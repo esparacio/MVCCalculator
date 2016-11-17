@@ -45,4 +45,9 @@ public interface CalcControllerInterface {
 	 */
 	String getEquation();
 	
+	/**
+	 * setClear() will restart the calculator
+	 */
+	void setClear();
+	
 }

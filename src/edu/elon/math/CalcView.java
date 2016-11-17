@@ -11,6 +11,7 @@ import java.awt.event.WindowEvent;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 
@@ -36,6 +37,7 @@ public class CalcView implements Observer, ActionListener {
 	JFrame frame; 
 	JTextField answer;
 	Button equalsButton;
+	Button clearButton;
 	
 	/**
 	 * Variable for the current string the user input
@@ -104,13 +106,24 @@ public class CalcView implements Observer, ActionListener {
 	  equalsButton = new Button("=");
 	  equalsButton.setBackground(Color.magenta);
 	  equalsButton.addActionListener(this);
-	  
-	  //finish setting the frame up and set it as visible
 		frame.add(equalsButton,c);	
+		
+		//add clear button
+		c.gridwidth = 4;
+		c.gridx = 0;
+		c.gridy = 5;
+		c.ipady = 20;      
+		clearButton = new Button("CLEAR");
+		clearButton.setBackground(Color.magenta);
+	  clearButton.addActionListener(this);
+		frame.add(clearButton,c);
+		
+	  //finish setting the frame up and set it as visible
 		frame.setSize(400, 400);
     frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
+		
 		
 		//remove observer upon closing the window
 		frame.addWindowListener(new WindowAdapter() {
@@ -193,7 +206,9 @@ public class CalcView implements Observer, ActionListener {
 		if(event.getSource()==equalsButton){
 			String currentAnswer = answer.getText();
 			controller.answerEquals(currentAnswer);
-		} 
+		} else if(event.getSource()==clearButton){
+			controller.setClear();
+		}
 		
 	}
 

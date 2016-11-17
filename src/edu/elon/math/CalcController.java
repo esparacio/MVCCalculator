@@ -75,4 +75,11 @@ public class CalcController implements CalcControllerInterface {
 		return model.getEq();
 	}
 	
+	/**
+	 * setClear() will restart the calculator
+	 */	
+	public void setClear(){
+		model.initialize();
+	}
+	
 }

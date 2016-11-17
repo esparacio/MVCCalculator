@@ -29,6 +29,7 @@ public class CalcModel extends Observable implements CalcModelInterface {
 	public void initialize() {
 		totalEq = new ArrayList<String>();
 		equation = "";
+		dataChanged();
 	}
 
 	/**
